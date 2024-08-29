@@ -51,3 +51,31 @@ linkAsignaturas.addEventListener("click", function (event) {
     contenedorAsignaturas.classList.add("active");
     contenedorEstudiantes.classList.remove("active");
 });
+
+function agregarFila(tabla, id, nombre) {
+    var row = tabla.insertRow();
+    var cellId = row.insertCell(0);
+    var cellNombre = row.insertCell(1);
+    var cellAcciones = row.insertCell(2);
+
+    cellId.textContent = id;
+    cellNombre.textContent = nombre;
+    cellAcciones.innerHTML = '<button class="btn-editar">Editar</button> <button class="btn-eliminar">Eliminar</button>';
+}
+
+var tablaEstudiantes = document.querySelector("#contenedorEstudiantes table tbody");
+var btnAgregarEstudiante = document.getElementById("agregarEstudiante");
+btnAgregarEstudiante.addEventListener("click", function() {
+    var id = tablaEstudiantes.rows.length + 1;
+    var nombre = prompt("Ingrese el nombre del estudiante:");
+    agregarFila(tablaEstudiantes, id, nombre);
+});
+
+var tablaAsignaturas = document.querySelector("#contenedorAsignaturas table tbody");
+var btnAgregarAsignatura = document.getElementById("agregarAsignatura");
+btnAgregarAsignatura.addEventListener("click", function() {
+    var id = tablaAsignaturas.rows.length + 1;
+    var nombre = prompt("Ingrese el nombre de la asignatura:");
+    agregarFila(tablaAsignaturas, id, nombre);
+});
+
